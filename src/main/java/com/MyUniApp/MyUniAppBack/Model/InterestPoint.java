@@ -2,6 +2,8 @@ package com.MyUniApp.MyUniAppBack.Model;
 
 public class InterestPoint {
 
+    private String id;
+
     private String Description;
 
     private String Title;
@@ -12,7 +14,7 @@ public class InterestPoint {
 
     private double lat;
 
-    public InterestPoint(String description, String title, String label, double lng, double lat) {
+    public InterestPoint(String description, String title, String label, double lng, double lat, String id) {
         Description = description;
         Title = title;
         Label = label;
