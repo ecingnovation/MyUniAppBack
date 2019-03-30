@@ -74,4 +74,18 @@ public class AppNew {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " title='" + getTitle() + "'" +
+            ", publisher='" + getPublisher() + "'" +
+            ", type='" + getType() + "'" +
+            ", date='" + getDate() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", content='" + getContent() + "'" +
+            ", imageURL='" + getImageURL() + "'" +
+            "}";
+    }
+
 }

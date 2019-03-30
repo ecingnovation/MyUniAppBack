@@ -28,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void postNew(AppNew appNew) {
-        newsList.add(appNew);
+        newsList.add(0, appNew);
     }
 
 }
