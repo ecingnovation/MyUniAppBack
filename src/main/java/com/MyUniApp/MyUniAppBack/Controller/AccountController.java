@@ -6,6 +6,7 @@ import com.MyUniApp.MyUniAppBack.Services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletException;
 import java.util.Date;
 
-
+@CrossOrigin(origins = {"http://localhost:3000", "https://myuniapp-eci.firebaseapp.com/"})
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {

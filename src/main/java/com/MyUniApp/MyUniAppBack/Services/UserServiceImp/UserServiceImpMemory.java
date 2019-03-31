@@ -18,6 +18,7 @@ public class UserServiceImpMemory implements UserService {
     private void populateSampleData()
     {
         userHashMap.put("admin", new User("admin", "admin", "admin@admin.com", 123, "admin"));
+        userHashMap.put("test@mail.com", new User("Juan", "Suarez", "juan.suarez@mail.com", 123, "password"));
     }
 
     @Override
