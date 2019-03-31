@@ -1,7 +1,5 @@
 package com.MyUniApp.MyUniAppBack.Model;
 
-import java.util.Objects;
-
 public class User {
 
     private String id;

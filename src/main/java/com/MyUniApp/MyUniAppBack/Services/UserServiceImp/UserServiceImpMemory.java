@@ -7,11 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 @Service
 public class UserServiceImpMemory implements UserService {
 
     private HashMap<String,User> userHashMap = new HashMap<String, User>();
+
+    @PostConstruct
+    private void populateSampleData()
+    {
+        userHashMap.put("admin", new User("admin", "admin", "admin@admin.com", 123, "admin"));
+        userHashMap.put("test@mail.com", new User("Juan", "Suarez", "juan.suarez@mail.com", 123, "password"));
+    }
 
     @Override
     public List<User> getUsersList() {
