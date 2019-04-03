@@ -42,5 +42,10 @@ public class MapServiceImpMemory implements MapService {
         InterestPoints.put(id,new InterestPoint(description,title,label,lng,lat,id));
         return InterestPoints.get(id);
     }
+
+    @Override
+    public void deleteInterestPoint(String id) {
+
+    }
 }
 
