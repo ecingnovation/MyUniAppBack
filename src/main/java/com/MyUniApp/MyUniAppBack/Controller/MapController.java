@@ -51,7 +51,7 @@ public class MapController {
 
     @RequestMapping(path = "/points/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> removePlayer(@PathVariable("id") String id) {
-        ms.
+        ms.deleteInterestPoint(id);
 
     }
 }
