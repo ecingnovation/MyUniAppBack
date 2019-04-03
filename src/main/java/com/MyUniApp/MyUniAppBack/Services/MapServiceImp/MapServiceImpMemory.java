@@ -20,9 +20,11 @@ public class MapServiceImpMemory implements MapService {
     }
 
     private void mockData() {
-        for(int i=0;i<10;i++){
-            InterestPoints.put(""+i,new InterestPoint("Mock"+i,"tite"+i,"label"+i,i,i,""+i));
-        }
+
+            InterestPoints.put("0",new InterestPoint("Bloque A ","A","A",-74.0427843,4.7827587,"0"));
+            InterestPoints.put("1",new InterestPoint("Bloque B ","B","B",-74.0427804,4.7828577,"1"));
+            InterestPoints.put("2",new InterestPoint("Bloque C ","C","C",-74.0422877,4.7824575,"2"));
+
 
     }
 
