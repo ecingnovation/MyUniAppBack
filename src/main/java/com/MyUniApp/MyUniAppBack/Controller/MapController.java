@@ -28,7 +28,7 @@ public class MapController {
         return json;
     }
 
-    @RequestMapping(value = "/point/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/points/{id}", method = RequestMethod.GET)
     public InterestPoint getInterestPointById(@PathVariable("id") String id) {
         InterestPoint json = ms.getInterestPointById(id);
         System.out.println(json);
