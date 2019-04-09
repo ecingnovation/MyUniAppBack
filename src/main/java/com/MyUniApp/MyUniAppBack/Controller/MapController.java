@@ -1,21 +1,16 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 
-import com.MyUniApp.MyUniAppBack.Exceptions.MapException;
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
-import com.MyUniApp.MyUniAppBack.MyUniAppBackApplication;
 import com.MyUniApp.MyUniAppBack.Services.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@CrossOrigin(origins = {"http://localhost:3000", "https://myuniapp-eci.firebaseapp.com"})
+//@CrossOrigin(origins = {"http://localhost:3000", "https://myuniapp-eci.firebaseapp.com"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/map")
 
@@ -25,10 +20,12 @@ public class MapController {
     MapService ms;
 
 
+
+
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
         List<InterestPoint> json = ms.getInterestPointsList();
-        //System.out.println(json);
+        System.out.println(json);
         return json;
     }
 
