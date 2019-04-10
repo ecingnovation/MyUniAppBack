@@ -6,22 +6,17 @@ import com.MyUniApp.MyUniAppBack.Services.MapService;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class MapServiceMongo implements MapService {
     private Datastore datastore = MongoConnection.getConnection();
 
-
     @Override
     public List<InterestPoint> getInterestPointsList() {
 
         return datastore.createQuery(InterestPoint.class).asList();
     }
-
 
     @Override
     public InterestPoint getInterestPointById(String id) {
@@ -50,4 +45,3 @@ public class MapServiceMongo implements MapService {
         datastore.delete(query);
     }
 }
-

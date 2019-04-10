@@ -3,8 +3,6 @@ package com.MyUniApp.MyUniAppBack.Persistence;
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
 import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import com.mongodb.*;
-
-
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
@@ -12,13 +10,9 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-
 import java.net.UnknownHostException;
 
-
-
 public class MongoConnection {
-
 
     public static Datastore getConnection() {
         final Morphia morphia = new Morphia();
@@ -28,5 +22,4 @@ public class MongoConnection {
         datastore.ensureIndexes();
         return datastore;
     }
-
 }

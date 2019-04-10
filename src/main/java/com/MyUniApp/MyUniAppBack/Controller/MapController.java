@@ -1,6 +1,5 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
-
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
 import com.MyUniApp.MyUniAppBack.Services.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ public class MapController {
 
     @Autowired
     MapService ms;
-
-
-
 
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
@@ -42,15 +38,12 @@ public class MapController {
     public ResponseEntity<?> createPoint(String id, String title, String label, double lng, double lat, String description){
             ms.createInterestPoint(description,title,label,lng,lat,id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-
     }
 
     @RequestMapping(path = "/points/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> removePlayer(@PathVariable("id") String id) {
         ms.deleteInterestPoint(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
     }
 }
 
