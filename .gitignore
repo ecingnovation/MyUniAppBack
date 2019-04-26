@@ -26,3 +26,6 @@
 
 ### VS Code ###
 .vscode/
+
+### Ignore Process id attach files
+.attach_pid*

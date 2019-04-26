@@ -14,8 +14,7 @@ public class MyUniAppBackApplication {
 	public FilterRegistrationBean jwtFilter(){
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setFilter( new JwtFilter() );
-		registrationBean.addUrlPatterns("/users");
-		//TODO registrationBean.addUrlPatterns("/news") //Not added yet while testing
+		registrationBean.addUrlPatterns("/news/*", "/users/*", "/users");
 
 		return registrationBean;
 	}
