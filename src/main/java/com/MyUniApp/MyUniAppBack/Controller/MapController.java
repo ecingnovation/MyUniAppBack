@@ -1,6 +1,5 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
-
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
 import com.MyUniApp.MyUniAppBack.Repositories.MapServiceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/map")
-
 public class MapController {
 
     @Autowired
     MapServiceRepo ms;
-
-
-
 
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
@@ -40,15 +35,12 @@ public class MapController {
     public ResponseEntity<?> createPoint(String id, String title, String label, Double lng, Double lat, String description){
             ms.save(new InterestPoint(id,description,title,label,lng,lat));
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-
     }
 
     @RequestMapping(path = "/points/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<?> removePlayer(@PathVariable("id") String id) {
         ms.deleteById(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
     }
 }
 

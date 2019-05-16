@@ -33,13 +33,12 @@ public class KioskoController {
     @RequestMapping(value = "/menuItems/k/{kiosko}", method = RequestMethod.GET)
     public List<KioskoMenu> getKioskoMenuItemsByKioskoId(@PathVariable("kiosko") String kiosko) {
         List<KioskoMenu> json  = ks.findAllByKiosko(kiosko);
-
         return json;
     }
 
     @RequestMapping(value = "/menuItems/tipo/{tipo}", method = RequestMethod.GET)
     public List<KioskoMenu> getKioskoMenuItemsByTipo(@PathVariable("tipo") String tipo) {
-        List<KioskoMenu> json = json = ks.findAllByTipo(tipo);
+        List<KioskoMenu> json = ks.findAllByTipo(tipo);
         return json;
     }
 
@@ -47,12 +46,8 @@ public class KioskoController {
             produces = "application/json",
             method=RequestMethod.POST)
     public ResponseEntity<?> createKioskosMenu(String id, String titulo, String tipo, long precio, String descripcion, String kiosko, String imageURL){
-
-            ks.save(new KioskoMenu(id,titulo,tipo,precio,descripcion,kiosko,imageURL));
-
+        ks.save(new KioskoMenu(id,titulo,tipo,precio,descripcion,kiosko,imageURL));
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-
     }
 
     @RequestMapping(value = "/menuItems",
@@ -67,6 +62,5 @@ public class KioskoController {
     public ResponseEntity<?> removeKioskosMenu(@PathVariable("id") String id) {
         ks.deleteById(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
     }
 }
