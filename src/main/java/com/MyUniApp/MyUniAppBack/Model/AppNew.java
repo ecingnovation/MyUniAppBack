@@ -1,5 +1,8 @@
 package com.MyUniApp.MyUniAppBack.Model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "News")
 public class AppNew {
     private String title;
     private String publisher;

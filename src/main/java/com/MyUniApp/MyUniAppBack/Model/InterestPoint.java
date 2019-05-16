@@ -1,44 +1,32 @@
 package com.MyUniApp.MyUniAppBack.Model;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Property;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotEmpty;
 
-@Entity
+@Document(collection = "InterestPoints")
 public class InterestPoint {
 
     @Id
-    @JsonProperty("id")
-    @Property("_id")
-    private String id;
-    @JsonProperty("Description")
-    @NotEmpty
-    private String Description;
-    @JsonProperty("Title")
-    @NotEmpty
-    private String Title;
-    @JsonProperty("Label")
-    @NotEmpty
-    private String Label;
-    @JsonProperty("lng")
-    @NotEmpty
-    private double lng;
-    @JsonProperty("lat")
-    @NotEmpty
-    private double lat;
 
-    @JsonCreator
+    private String id;
+
+    private String Description;
+
+    private String Title;
+
+    private String Label;
+
+    private Double lng;
+
+    private Double lat;
+
     public InterestPoint(){
 
     }
 
-    @JsonCreator
-    public InterestPoint(String id, @NotEmpty String description, @NotEmpty String title, @NotEmpty String label, @NotEmpty double lng, @NotEmpty double lat) {
+    public InterestPoint(String id, String description, String title,  String label,  double lng, double lat) {
         this.id = id;
         Description = description;
         Title = title;
