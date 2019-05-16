@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@CrossOrigin(origins = {"http://localhost:3000", "https://myuniapp-eci.firebaseapp.com"})
-//@CrossOrigin(origins = "*")
-
 @RestController
 public class HomeController {
 

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletException;
 import java.util.Date;
 
-@CrossOrigin(origins = {"http://localhost:3000", "https://myuniapp-eci.firebaseapp.com"})
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
