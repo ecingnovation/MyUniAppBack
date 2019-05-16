@@ -38,7 +38,7 @@ public class KioskoController {
         return json;
     }
 
-    @RequestMapping(value = "/menuItems/kioskos/{kiosko}", method = RequestMethod.GET)
+    @RequestMapping(value = "/menuItems/k/{kiosko}", method = RequestMethod.GET)
     public List<KioskoMenu> getKioskoMenuItemsByKioskoId(@PathVariable("kiosko") String kiosko) {
         List<KioskoMenu> json = null;
         try {
