@@ -1,6 +1,12 @@
 package com.MyUniApp.MyUniAppBack.Model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Kioskos")
 public class KioskoMenu {
+
+    @Id
     private String id;
     private String titulo;
     private String tipo;
