@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "News")
 public class AppNew {
+    private int id;
     private String title;
     private String publisher;
     private String type;
@@ -12,7 +13,8 @@ public class AppNew {
     private String content;
     private String imageURL;
 
-    public AppNew(String title, String publisher, String type, long date, String email, String content, String imageURL) {
+    public AppNew(int id, String title, String publisher, String type, long date, String email, String content, String imageURL) {
+        this.id = id;
         this.title = title;
         this.publisher = publisher;
         this.type = type;
@@ -20,6 +22,14 @@ public class AppNew {
         this.email = email;
         this.content = content;
         this.imageURL = imageURL;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -81,7 +91,8 @@ public class AppNew {
     @Override
     public String toString() {
         return "{" +
-            " title='" + getTitle() + "'" +
+            " id='" + getId() + "'" +
+            ", title='" + getTitle() + "'" +
             ", publisher='" + getPublisher() + "'" +
             ", type='" + getType() + "'" +
             ", date='" + getDate() + "'" +
@@ -90,5 +101,4 @@ public class AppNew {
             ", imageURL='" + getImageURL() + "'" +
             "}";
     }
-
 }

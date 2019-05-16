@@ -24,6 +24,7 @@ public class NewsController {
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
     public void postNew(@RequestBody AppNew appNew) {
+        appNew.setId(newsService.getNewsCount() + 1);
         newsService.postNew(appNew);
     }
     
