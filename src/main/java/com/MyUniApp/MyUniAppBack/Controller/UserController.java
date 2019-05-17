@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/All")
+    @GetMapping("/private/all")
     public ResponseEntity<?> getUser(){
         try{
             return new ResponseEntity<>(userService.getUsersList(), HttpStatus.ACCEPTED);
@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/private/{id}")
     public ResponseEntity<?> getUserById(@PathVariable ("id") String id){
         try{
             return new ResponseEntity<>(userService.getUser(id),HttpStatus.ACCEPTED);
@@ -43,7 +43,7 @@ public class UserController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/private/")
     public ResponseEntity<?> updateUser(@RequestBody User user){
         try {
             return new ResponseEntity<>(userService.updateUser(user), HttpStatus.ACCEPTED);
@@ -61,22 +61,22 @@ public class UserController {
         }
     }
     
-    @RequestMapping(value="/createstudent", method=RequestMethod.POST)
+    @RequestMapping(value="/public/createstudent", method=RequestMethod.POST)
     public ResponseEntity<?> createStudent(@RequestBody Student student) {
         return createUser(student);
     }
 
-    @RequestMapping(value="/createteacher", method=RequestMethod.POST)
+    @RequestMapping(value="/public/createteacher", method=RequestMethod.POST)
     public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher) {
         return createUser(teacher);
     }
 
-    @RequestMapping(value="/createadministrative", method=RequestMethod.POST)
+    @RequestMapping(value="/public/createadministrative", method=RequestMethod.POST)
     public ResponseEntity<?> createAdministrative(@RequestBody Administrative admin) {
         return createUser(admin);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/private/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable String id){
         try{
             userService.removeUser(id);
