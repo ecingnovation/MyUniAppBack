@@ -1,6 +1,9 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 import com.MyUniApp.MyUniAppBack.Exceptions.UserException;
+import com.MyUniApp.MyUniAppBack.Model.Administrative;
+import com.MyUniApp.MyUniAppBack.Model.Student;
+import com.MyUniApp.MyUniAppBack.Model.Teacher;
 import com.MyUniApp.MyUniAppBack.Model.User;
 import com.MyUniApp.MyUniAppBack.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -49,13 +53,28 @@ public class UserController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user){
+    
+    public ResponseEntity<?> createUser(User user){
         try{
             return new ResponseEntity<>(userService.createUser(user), HttpStatus.ACCEPTED);
         } catch (UserException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
+    }
+    
+    @RequestMapping(value="/createstudent", method=RequestMethod.POST)
+    public ResponseEntity<?> createStudent(@RequestBody Student student) {
+        return createUser(student);
+    }
+
+    @RequestMapping(value="/createteacher", method=RequestMethod.POST)
+    public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher) {
+        return createUser(teacher);
+    }
+
+    @RequestMapping(value="/createadministrative", method=RequestMethod.POST)
+    public ResponseEntity<?> createAdministrative(@RequestBody Administrative admin) {
+        return createUser(admin);
     }
 
     @DeleteMapping("/{id}")

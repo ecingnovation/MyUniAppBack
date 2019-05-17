@@ -38,11 +38,12 @@ public class UserServiceImpMemory implements UserService {
 
     @Override
     public User createUser(User user) throws UserException {
-        String userId = user.getId();
-        if(userHashMap.containsKey(userId)){
+        user.setId(String.valueOf(userHashMap.size() + 1));
+        if(userHashMap.containsKey(user.getId())){
             throw new UserException(UserException.ALREADY_EXISTS);
         }
         userHashMap.put(user.getId(),user);
+        System.out.println(user.toString());
         return user;
     }
 

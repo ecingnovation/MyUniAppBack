@@ -32,7 +32,7 @@ public class Student extends User{
 
     @Override
     public String toString() {
-        return toString()+" Student{" +
+        return super.toString()+" Student{" +
                 "faculty=" + faculty +
                 ", semester=" + semester +
                 '}';
