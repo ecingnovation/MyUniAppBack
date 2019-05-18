@@ -1,9 +1,12 @@
 package com.MyUniApp.MyUniAppBack.Model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "News")
 public class AppNew {
+    @Id
+
     private int id;
     private String title;
     private String publisher;

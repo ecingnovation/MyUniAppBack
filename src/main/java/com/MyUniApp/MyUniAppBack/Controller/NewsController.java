@@ -1,7 +1,8 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 import com.MyUniApp.MyUniAppBack.Model.AppNew;
-import com.MyUniApp.MyUniAppBack.Services.NewsService;
+
+import com.MyUniApp.MyUniAppBack.Repositories.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,18 +15,18 @@ import java.util.List;
 public class NewsController {
 
     @Autowired
-    NewsService newsService;
+    NewsRepository newsRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<AppNew> getAllNews() {
-        List<AppNew> value = newsService.getAllNews();
+        List<AppNew> value = newsRepository.findAll();
         return value;
     }
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
     public void postNew(@RequestBody AppNew appNew) {
-        appNew.setId(newsService.getNewsCount() + 1);
-        newsService.postNew(appNew);
+        appNew.setId(newsRepository.findAll().size() + 1);
+        newsRepository.save(appNew);
     }
     
 }

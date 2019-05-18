@@ -1,7 +1,7 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
-import com.MyUniApp.MyUniAppBack.Repositories.MapServiceRepo;
+import com.MyUniApp.MyUniAppBack.Repositories.MapsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.List;
 public class MapController {
 
     @Autowired
-    MapServiceRepo ms;
+    MapsRepository ms;
 
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {

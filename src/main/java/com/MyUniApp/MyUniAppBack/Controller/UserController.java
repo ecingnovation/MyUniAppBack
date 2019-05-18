@@ -1,11 +1,10 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
-import com.MyUniApp.MyUniAppBack.Exceptions.UserException;
 import com.MyUniApp.MyUniAppBack.Model.Administrative;
 import com.MyUniApp.MyUniAppBack.Model.Student;
 import com.MyUniApp.MyUniAppBack.Model.Teacher;
 import com.MyUniApp.MyUniAppBack.Model.User;
-import com.MyUniApp.MyUniAppBack.Services.UserService;
+import com.MyUniApp.MyUniAppBack.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @GetMapping("/private/all")
     public ResponseEntity<?> getUser(){
         try{
-            return new ResponseEntity<>(userService.getUsersList(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(userRepository.findAll(), HttpStatus.ACCEPTED);
         }catch(Exception ex){
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
@@ -36,29 +35,32 @@ public class UserController {
 
     @GetMapping("/private/{id}")
     public ResponseEntity<?> getUserById(@PathVariable ("id") String id){
-        try{
-            return new ResponseEntity<>(userService.getUser(id),HttpStatus.ACCEPTED);
-        } catch (UserException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
+                if(userRepository.findById(id).isPresent()){
+                    return new ResponseEntity<>(userRepository.findById(id).get(),HttpStatus.ACCEPTED);
+                }
+                else{
+                    return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+                }
+
     }
 
     @PutMapping("/private/")
     public ResponseEntity<?> updateUser(@RequestBody User user){
-        try {
-            return new ResponseEntity<>(userService.updateUser(user), HttpStatus.ACCEPTED);
-        } catch (UserException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        if(userRepository.findById(user.getId()).isPresent()) {
+            return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);
         }
+        else{
+
+            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        }
+
     }
 
     
     public ResponseEntity<?> createUser(User user){
-        try{
-            return new ResponseEntity<>(userService.createUser(user), HttpStatus.ACCEPTED);
-        } catch (UserException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
+             user.setId(user.getEmail());
+            return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);
+
     }
     
     @RequestMapping(value="/public/createstudent", method=RequestMethod.POST)
@@ -78,11 +80,14 @@ public class UserController {
 
     @DeleteMapping("/private/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable String id){
-        try{
-            userService.removeUser(id);
+        if(userRepository.findById(id).isPresent()) {
+            userRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (UserException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
+        else {
+
+            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        }
+
     }
 }
