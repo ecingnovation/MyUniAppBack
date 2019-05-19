@@ -18,14 +18,14 @@ public class MapController {
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
         List<InterestPoint> json = ms.findAll();
-        System.out.println(json);
+       // System.out.println(json);
         return json;
     }
 
     @RequestMapping(value = "/points/{id}", method = RequestMethod.GET)
     public InterestPoint getInterestPointById(@PathVariable("id") String id) {
         InterestPoint json = ms.findById(id).get();
-        System.out.println(json);
+       // System.out.println(json);
         return json;
     }
 
