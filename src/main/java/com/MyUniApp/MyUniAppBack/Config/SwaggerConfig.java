@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

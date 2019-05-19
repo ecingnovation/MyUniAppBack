@@ -35,13 +35,12 @@ public class UserController {
 
     @GetMapping("/private/{id}")
     public ResponseEntity<?> getUserById(@PathVariable ("id") String id){
-                if(userRepository.findById(id).isPresent()){
-                    return new ResponseEntity<>(userRepository.findById(id).get(),HttpStatus.ACCEPTED);
-                }
-                else{
-                    return new ResponseEntity<>( HttpStatus.NOT_FOUND);
-                }
-
+        if(userRepository.findById(id).isPresent()){
+            return new ResponseEntity<>(userRepository.findById(id).get(),HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping("/private/")
@@ -50,17 +49,14 @@ public class UserController {
             return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);
         }
         else{
-
             return new ResponseEntity<>( HttpStatus.NOT_FOUND);
         }
-
     }
 
     
     public ResponseEntity<?> createUser(User user){
-             user.setId(user.getEmail());
-            return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);
-
+        user.setId(user.getEmail());
+        return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);
     }
     
     @RequestMapping(value="/public/createstudent", method=RequestMethod.POST)
@@ -85,9 +81,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
         else {
-
             return new ResponseEntity<>( HttpStatus.NOT_FOUND);
         }
-
     }
 }
