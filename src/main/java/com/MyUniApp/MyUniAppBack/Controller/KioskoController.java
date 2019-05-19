@@ -42,19 +42,12 @@ public class KioskoController {
         return json;
     }
 
-    @RequestMapping(value = "/menuItems",
+    @RequestMapping(value = "/menuItems/post",
             produces = "application/json",
             method=RequestMethod.POST)
-    public ResponseEntity<?> createKioskosMenu(String id, String titulo, String tipo, long precio, String descripcion, String kiosko, String imageURL){
+    public ResponseEntity<?> createKioskosMenu(String id, String titulo, String tipo, Long precio, String descripcion, String kiosko, String imageURL){
         ks.save(new KioskoMenu(id,titulo,tipo,precio,descripcion,kiosko,imageURL));
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }
-
-    @RequestMapping(value = "/menuItems",
-            produces = "application/json",
-            method=RequestMethod.PUT)
-    public ResponseEntity<?> updateKioskosMenu(String id, String titulo, String tipo, long precio, String descripcion, String kiosko, String imageURL){
-        ks.save(new KioskoMenu(id,titulo,tipo,precio,descripcion,kiosko,imageURL));
+        System.out.println(titulo);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

@@ -1,7 +1,7 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 import com.MyUniApp.MyUniAppBack.Model.InterestPoint;
-import com.MyUniApp.MyUniAppBack.Repositories.MapServiceRepo;
+import com.MyUniApp.MyUniAppBack.Repositories.MapsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,27 +13,27 @@ import java.util.List;
 public class MapController {
 
     @Autowired
-    MapServiceRepo ms;
+    MapsRepository ms;
 
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
         List<InterestPoint> json = ms.findAll();
-
+       // System.out.println(json);
         return json;
     }
 
     @RequestMapping(value = "/points/{id}", method = RequestMethod.GET)
     public InterestPoint getInterestPointById(@PathVariable("id") String id) {
         InterestPoint json = ms.findById(id).get();
-        System.out.println(json);
+       // System.out.println(json);
         return json;
     }
 
     @RequestMapping(value = "/points",
             produces = "application/json",
             method=RequestMethod.POST)
-    public ResponseEntity<?> createPoint(String id, String title, String label, Double lng, Double lat, String description){
-            ms.save(new InterestPoint(id,description,title,label,lng,lat));
+    public ResponseEntity<?> createPoint(String id, String title, String label, Double lng, Double lat, String description, String image){
+            ms.save(new InterestPoint(id,description,title,label,lng,lat,image));
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

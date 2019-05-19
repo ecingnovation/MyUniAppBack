@@ -38,7 +38,7 @@ public class UserServiceImpMemory implements UserService {
 
     @Override
     public User createUser(User user) throws UserException {
-        user.setId(String.valueOf(userHashMap.size() + 1));
+        user.setId(user.getEmail());
         if(userHashMap.containsKey(user.getId())){
             throw new UserException(UserException.ALREADY_EXISTS);
         }
@@ -63,5 +63,4 @@ public class UserServiceImpMemory implements UserService {
         }
         userHashMap.remove(userId);
     }
-
 }
