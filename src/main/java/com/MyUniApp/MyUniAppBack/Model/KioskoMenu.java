@@ -10,12 +10,12 @@ public class KioskoMenu {
     private String id;
     private String titulo;
     private String tipo;
-    private long precio;
+    private Long precio;
     private String descripcion;
     private String kiosko;
     private String imageURL;
 
-    public KioskoMenu(String id, String titulo, String tipo, long precio, String descripcion, String kiosko, String imageURL) {
+    public KioskoMenu(String id, String titulo, String tipo, Long precio, String descripcion, String kiosko, String imageURL) {
         this.id = id;
         this.titulo = titulo;
         this.tipo = tipo; //El tipo puede ser A: Almuerzo, D: Desayuno, I:Individual, B: Bebida, C: Combo.
@@ -53,7 +53,7 @@ public class KioskoMenu {
         return precio;
     }
 
-    public void setPrecio(long precio) {
+    public void setPrecio(Long precio) {
         this.precio = precio;
     }
 
