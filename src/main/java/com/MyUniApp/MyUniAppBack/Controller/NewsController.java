@@ -27,6 +27,6 @@ public class NewsController {
         appNew.setId(newsService.getNewsCount() + 1);
         newsService.postNew(appNew);
     }
-    
+
 }
 
