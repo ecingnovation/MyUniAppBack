@@ -1,4 +1,4 @@
-package com.MyUniApp.MyUniAppBack.Services.NewsServiceImpl;
+package com.MyUniApp.MyUniAppBack.Services.DiligenceServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
