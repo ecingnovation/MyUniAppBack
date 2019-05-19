@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -19,13 +23,14 @@ public class NewsController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<AppNew> getAllNews() {
-        List<AppNew> value = newsRepository.findAll();
+        List<AppNew> value = new ArrayList<>(newsRepository.findAll());
+        Collections.reverse(value);
         return value;
     }
 
     @RequestMapping(value="/post", method=RequestMethod.POST)
     public void postNew(@RequestBody AppNew appNew) {
-        appNew.setId(newsRepository.findAll().size() + 1);
+        appNew.setId((int)newsRepository.count() + 1);
         newsRepository.save(appNew);
     }
     

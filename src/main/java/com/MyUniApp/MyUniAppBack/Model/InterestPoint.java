@@ -22,17 +22,21 @@ public class InterestPoint {
 
     private Double lat;
 
+    private String imageURL;
+
     public InterestPoint(){
 
     }
 
-    public InterestPoint(String id, String description, String title,  String label,  double lng, double lat) {
+
+    public InterestPoint(String id, String description, String title, String label, Double lng, Double lat, String imageURL) {
         this.id = id;
         Description = description;
         Title = title;
         Label = label;
         this.lng = lng;
         this.lat = lat;
+        this.imageURL = imageURL;
     }
 
     public String getDescription() {
@@ -75,6 +79,30 @@ public class InterestPoint {
         this.lat = lat;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     @Override
     public String toString() {
         return "InterestPoint{" +
@@ -84,6 +112,7 @@ public class InterestPoint {
                 ", Label='" + Label + '\'' +
                 ", lng=" + lng +
                 ", lat=" + lat +
+                ", imageURL='" + imageURL + '\'' +
                 '}';
     }
 }

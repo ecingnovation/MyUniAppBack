@@ -32,8 +32,8 @@ public class MapController {
     @RequestMapping(value = "/points",
             produces = "application/json",
             method=RequestMethod.POST)
-    public ResponseEntity<?> createPoint(String id, String title, String label, Double lng, Double lat, String description){
-            ms.save(new InterestPoint(id,description,title,label,lng,lat));
+    public ResponseEntity<?> createPoint(String id, String title, String label, Double lng, Double lat, String description, String image){
+            ms.save(new InterestPoint(id,description,title,label,lng,lat,image));
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
