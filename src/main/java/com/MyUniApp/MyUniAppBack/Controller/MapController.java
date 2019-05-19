@@ -18,7 +18,7 @@ public class MapController {
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
         List<InterestPoint> json = ms.findAll();
-
+        System.out.println(json);
         return json;
     }
 
