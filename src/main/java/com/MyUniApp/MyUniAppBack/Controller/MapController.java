@@ -5,7 +5,10 @@ import com.MyUniApp.MyUniAppBack.Repositories.MapsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
@@ -18,14 +21,12 @@ public class MapController {
     @RequestMapping(value = "/points", method = RequestMethod.GET)
     public List<InterestPoint> getAllInterestPoints() {
         List<InterestPoint> json = ms.findAll();
-       // System.out.println(json);
         return json;
     }
 
     @RequestMapping(value = "/points/{id}", method = RequestMethod.GET)
     public InterestPoint getInterestPointById(@PathVariable("id") String id) {
         InterestPoint json = ms.findById(id).get();
-       // System.out.println(json);
         return json;
     }
 
