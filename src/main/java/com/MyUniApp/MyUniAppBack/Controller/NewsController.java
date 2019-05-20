@@ -3,6 +3,7 @@ package com.MyUniApp.MyUniAppBack.Controller;
 import com.MyUniApp.MyUniAppBack.Model.AppNew;
 import com.MyUniApp.MyUniAppBack.Repositories.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,11 +26,17 @@ public class NewsController {
         return value;
     }
 
-    @RequestMapping(value="/post", method=RequestMethod.POST)
+    @RequestMapping(value="/post", method = RequestMethod.POST)
     public void postNew(@RequestBody AppNew appNew) {
         appNew.setId((int)newsRepository.count() + 1);
         newsRepository.save(appNew);
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteNewById(@PathVariable int id) {
+        if (newsRepository.findById(id).isPresent()) {
+            newsRepository.deleteById(id);
+        } 
+    }
 }
 

@@ -1,8 +1,7 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
-import com.MyUniApp.MyUniAppBack.Exceptions.UserException;
 import com.MyUniApp.MyUniAppBack.Model.User;
-import com.MyUniApp.MyUniAppBack.Services.UserService;
+import com.MyUniApp.MyUniAppBack.Repositories.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,10 @@ import java.util.Date;
 public class AccountController {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @RequestMapping( value = "/login", method = RequestMethod.POST )
-    public Token login( @RequestBody User login )
-            throws ServletException
-    {
+    public Token login( @RequestBody User login ) throws ServletException {
 
         String jwtToken;
 
@@ -36,9 +33,9 @@ public class AccountController {
         String password = login.getPassword();
 
         User user;
-        try {
-            user = userService.getUser(username);
-        } catch (UserException e) {
+        if (userRepository.findById(username).isPresent()) {
+            user = userRepository.findById(username).get();
+        } else {
             throw new ServletException( "User username not found." );
         }
 

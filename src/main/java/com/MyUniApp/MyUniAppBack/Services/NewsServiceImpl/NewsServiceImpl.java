@@ -35,7 +35,4 @@ public class NewsServiceImpl implements NewsService {
     public int getNewsCount() {
         return this.newsList.size();
     }
-
-    
-
 }
