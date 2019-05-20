@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.ServletException;
 import java.util.Date;
 
@@ -49,7 +48,6 @@ public class AccountController {
         {
             throw new ServletException( "Invalid login. Please check your name and password." );
         }
-        //
         jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "user" ).setIssuedAt( new Date() ).signWith(
                 SignatureAlgorithm.HS256, "secretkey" ).compact();
 
@@ -75,5 +73,4 @@ public class AccountController {
             this.accessToken = access_token;
         }
     }
-
 }

@@ -1,16 +1,13 @@
 package com.MyUniApp.MyUniAppBack.Controller;
 
 import com.MyUniApp.MyUniAppBack.Model.AppNew;
-
 import com.MyUniApp.MyUniAppBack.Repositories.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,6 +30,6 @@ public class NewsController {
         appNew.setId((int)newsRepository.count() + 1);
         newsRepository.save(appNew);
     }
-    
+
 }
 

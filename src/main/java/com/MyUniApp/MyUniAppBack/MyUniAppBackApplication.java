@@ -14,8 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyUniAppBackApplication {
 
 	@Bean
-	public FilterRegistrationBean jwtFilter(){
-		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+	public FilterRegistrationBean<JwtFilter> jwtFilter(){
+		final FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<>();
 		registrationBean.setFilter( new JwtFilter() );
 		registrationBean.addUrlPatterns("/news/*", "/users/private/*");
 		return registrationBean;
