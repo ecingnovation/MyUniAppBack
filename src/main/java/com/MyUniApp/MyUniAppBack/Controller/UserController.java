@@ -53,7 +53,6 @@ public class UserController {
         }
     }
 
-    
     public ResponseEntity<?> createUser(User user){
         user.setId(user.getEmail());
         return new ResponseEntity<>(userRepository.save(user), HttpStatus.ACCEPTED);

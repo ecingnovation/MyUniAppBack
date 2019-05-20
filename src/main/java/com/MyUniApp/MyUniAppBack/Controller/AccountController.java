@@ -73,5 +73,4 @@ public class AccountController {
             this.accessToken = access_token;
         }
     }
-
 }
