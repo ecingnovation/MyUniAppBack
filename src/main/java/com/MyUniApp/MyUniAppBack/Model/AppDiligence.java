@@ -8,20 +8,20 @@ public class AppDiligence {
     private String title;
     private String publisher;
     private String type;
-    private long date;
     private String email;
     private String content;
     private String imageURL;
+    private String infoURL;
 
-    public AppDiligence(int id, String title, String publisher, String type, long date, String email, String content, String imageURL) {
+    public AppDiligence(int id, String title, String publisher, String type, String email, String content, String imageURL, String infoURL) {
         this.id = id;
         this.title = title;
         this.publisher = publisher;
         this.type = type;
-        this.date = date;
         this.email = email;
         this.content = content;
         this.imageURL = imageURL;
+        this.infoURL = infoURL;
     }
 
     public int getId() {
@@ -56,14 +56,6 @@ public class AppDiligence {
         this.type = type;
     }
 
-    public long getDate() {
-        return this.date;
-    }
-
-    public void setDate(long date) {
-        this.date = date;
-    }
-
     public String getEmail() {
         return this.email;
     }
@@ -88,17 +80,25 @@ public class AppDiligence {
         this.imageURL = imageURL;
     }
 
+    public String getInfoURL() {
+        return this.infoURL;
+    }
+
+    public void setInfoURL(String infoURL) {
+        this.infoURL = infoURL;
+    }
+
     @Override
     public String toString() {
         return "{" +
-                " id='" + getId() + "'" +
-                ", title='" + getTitle() + "'" +
-                ", publisher='" + getPublisher() + "'" +
-                ", type='" + getType() + "'" +
-                ", date='" + getDate() + "'" +
-                ", email='" + getEmail() + "'" +
-                ", content='" + getContent() + "'" +
-                ", imageURL='" + getImageURL() + "'" +
-                "}";
+            " id='" + getId() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", publisher='" + getPublisher() + "'" +
+            ", type='" + getType() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", content='" + getContent() + "'" +
+            ", imageURL='" + getImageURL() + "'" +
+            ", infoURL='" + getInfoURL() + "'" +
+            "}";
     }
 }
