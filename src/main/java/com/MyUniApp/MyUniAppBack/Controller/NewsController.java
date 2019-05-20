@@ -30,6 +30,6 @@ public class NewsController {
         appNew.setId((int)newsRepository.count() + 1);
         newsRepository.save(appNew);
     }
-    
+
 }
 
